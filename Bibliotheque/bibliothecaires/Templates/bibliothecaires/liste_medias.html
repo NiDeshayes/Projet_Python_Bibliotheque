@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Liste des médias</h2>
+<ul>
+    {% for media in medias %}
+    <li>{{ media.titre }} - {{ media.get_type_display }} - {% if media.disponible %}<a href="{% url 'emprunter_media' media.id %}">Emprunter</a>{% else %}Non disponible - <a href="{% url 'rendre_media' media.id %}">Rendre</a>{% endif %}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
