@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+    {% load static %}
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="{% static 'style.css' %}" />
+        <title>Retourner un média</title>
+    </head>
+    <body>
+        <h1>Retourner un média</h1>
+        <form method="post" action="{% url 'retourner_media' id=media.id %}">
+            {% csrf_token %}
+            <input type="submit" value="Retourner" />
+        </form>
+    </body>
+</html>

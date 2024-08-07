@@ -1,14 +1,11 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.http import HttpResponse
-
-# Vue pour l'URL racine
-def home(request):
-    return HttpResponse("Bienvenue à la médiathèque!")
+from django.contrib.auth import views as auth_views
+from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('bibliothecaires/', include('bibliothecaires.urls')),
-    path('membres/', include('membres.urls')),
-    path('', home),  # Définir l'URL racine
+    path('', include('bibliothecaires.urls')),
+    path('emprunteur/', include('membres.urls')),
+    
 ]

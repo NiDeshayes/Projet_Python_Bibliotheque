@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Menu des membres{% endblock %}
+{% block content %}
+    <div>
+        <h2>Menu des membres</h2>
+        <a href="{% url 'liste_medias' %}">La liste des médias</a>
+    </div>
+
+    <h3>
+        Liste des medias emprunter &nbsp;|&nbsp;
+        <a href="{% url 'emprunter_media' media_type='livre' media_id=1 %}"
+            >Emprunt Livre</a
+        >
+        &nbsp;|&nbsp;
+        <a href="{% url 'emprunter_media' media_type='dvd' media_id=1 %}"
+            >Emprunt DVD</a
+        >
+        &nbsp;|&nbsp;
+        <a href="{% url 'emprunter_media' media_type='cd' media_id=1 %}"
+            >Emprunt CD</a
+        >
+    </h3>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Membre</th>
+            <th>Livre Emprunté</th>
+            <th>DVD Emprunté</th>
+            <th>CD Emprunté</th>
+            <th>Date d'Emprunt</th>
+            <th>Date de Retour</th>
+        </tr>
+        {% for emprunt in emprunts %}
+        <tr>
+            <td>{{ emprunt.id }}</td>
+            <td>{{ emprunt.membre.nom }}</td>
+            <td>{{ emprunt.livre_emprunte.nom}}</td>
+            <td>{{ emprunt.dvd_emprunte.nom}}</td>
+            <td>{{ emprunt.cd_emprunte.nom }}</td>
+            <td>{{ emprunt.date_emprunt|date:"d M, Y" }}</td>
+            <td>{{ emprunt.date_retour|date:"d M, Y" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

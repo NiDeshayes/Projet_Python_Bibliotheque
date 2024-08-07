@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Mettre à jour un membre{% endblock %}
+{% block content %}
+    <h3>Mettre à jour un membre</h3>
+    <form method="post">
+        {% csrf_token %}
+        <label for="nouveau_nom">Nouveau nom : </label><br />
+        <input
+            type="text"
+            id="nouveau_nom"
+            name="nouveau_nom"
+            value="{{ membre.nom }}" /><br />
+        <input type="submit" value="Mettre à jour" />
+    </form>
+{% endblock %}

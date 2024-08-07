@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Liste des Médias{% endblock %}
+{% block content %}
+    <h1>Liste des Médias</h1>
+
+    <h2>
+        Livres &nbsp;|&nbsp;
+        <a href="{% url 'ajouter_livre' %}">Ajouter un livre</a>
+    </h2>
+    <ul>
+        {% for livre in livres %}
+        <li>Nom du livre : {{ livre.nom }} - Auteur : {{livre.auteur }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>
+        CDs &nbsp;|&nbsp; <a href="{% url 'ajouter_cd' %}">Ajouter un CD</a>
+    </h2>
+    <ul>
+        {% for cd in cds %}
+        <li>{{ cd.nom }} - {{ cd.artiste }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>
+        DVDs &nbsp;|&nbsp;
+        <a href="{% url 'ajouter_dvd' %}">Ajouter un DVD</a>
+    </h2>
+    <ul>
+        {% for dvd in dvds %}
+        <li>{{ dvd.nom }} - {{ dvd.realisateur }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>
+        Jeux de Plateau &nbsp;|&nbsp;
+        <a href="{% url 'ajouter_jeu_de_plateau' %}"
+            >Ajouter un jeu de plateau
+        </a>
+    </h2>
+    <ul>
+        {% for jeu in jeux %}
+        <li>{{ jeu.nom }} - Créateur: {{ jeu.createur }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

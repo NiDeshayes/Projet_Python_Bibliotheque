@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Mettre à jour un membre{% endblock %}
+{% block content %}
+    <p>
+        Désolé, vous avez un emprunt en retard. Vous ne pouvez pas emprunter
+        de nouveaux médias .
+    </p>
+    <h3>Listes des emprunts en retard</h3>
+    <ul>
+        {% for emprunt in emprunts %}
+        <li>
+            {{ emprunt.membre.nom }} - {{ emprunt.date_emprunt }} - {{
+            emprunt.date_retour }}
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'liste_emprunts' %}">Retour à l'accueil</a>
+{% endblock %}

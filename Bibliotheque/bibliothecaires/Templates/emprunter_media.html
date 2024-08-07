@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Emprunter un média{% endblock %}
+{% block content %}
+    <h3>Sélectionnez un membre et un média à emprunter</h3>
+    <form method="post">
+        {% csrf_token %}
+        <label for="membre">Sélectionnez un membre :</label>
+        <select name="membre_id" id="membre">
+            {% for membre in membres %}
+            <option value="{{ membre.id }}">{{ membre.nom }}</option>
+            {% endfor %}
+        </select>
+        <br />
+        <label for="media">Sélectionnez un média :</label>
+        <select name="media_id" id="media">
+            {% for item in media %}
+            {% if item.disponible %}
+                <option value="{{ item.id }}">{{ item.nom }}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+        <br />
+        <button type="submit">Emprunter</button>
+    </form>
+{% endblock %}
